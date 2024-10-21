@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 
 // the app.listen() function starts a server and allows it to listen on a specified port
@@ -15,9 +16,11 @@ app.listen(8000, () => {
 //  to get the body for a POST request: req.body
 
 app.get("/", (req, res) => {
-  res.send("Response sent!");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.get("/About", (req, res) => {
-  res.send({ message: "No messages yet!" });
+  res.sendFile(path.join(__dirname, "public", "about.html"));
 });
+
+// the sendFile() method is used to send a file as a response to HTTP req.
